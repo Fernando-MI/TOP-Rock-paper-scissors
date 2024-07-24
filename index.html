@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        let player;
+        let cpu;
+        let Ppoints = 0;
+        let Cpoints = 0;
+        let opt;
+        function getCPUchoice() {
+            return Math.floor(Math.random() * 3);
+        }
+        
+        function playRound(player, cpu){
+            if(player == cpu){
+                console.log("Draw!");
+                return 0;
+            }else if((player - cpu) > 0){
+                console.log("Player won!");
+                return 1;
+            }else{
+                console.log("CPU won")
+                return -1;
+            }
+        }
+
+        function playGame(numberOfSets){
+            for(let i = 0; i < numberOfSets; i++){
+                cpu = getCPUchoice();
+                player = parseInt(prompt("0. Rock\n1. Paper\n2. Scissors"));
+                opt = playRound(player, cpu);
+                if(opt > 0){
+                    Ppoints++;
+                }else if(opt < 0){
+                    Cpoints++;
+                }
+            }
+            console.log("Game done\nPlayer: " + Ppoints + "\nCPU: " + Cpoints );
+        }
+        playGame(5);
+    </script>
+    <title>RPS</title>
+</head>
+<body>
+    
+</body>
+</html>
