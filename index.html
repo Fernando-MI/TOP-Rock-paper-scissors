@@ -2,47 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>RPS</title>
+</head>
+<body>
+    <button onclick="setRock()">Rock</button>
+    <button onclick="setPaper()">Paper</button>
+    <button onclick="setScissors()">Scissors</button>
+    <br>
+    <button class="play" onclick="playRound(player); showScore(); winCheck()">Play!</button>
+    <br>
+    <div class="container">
+
+    </div>
+    
+    
+    
+    
     <script>
         let player;
-        let cpu;
         let Ppoints = 0;
         let Cpoints = 0;
         let opt;
+        
+
+       
         function getCPUchoice() {
             return Math.floor(Math.random() * 3);
         }
-        
-        function playRound(player, cpu){
+
+        function setRock(){ player = 0;}
+        function setPaper(){ player = 1;}
+        function setScissors(){ player = 2;}
+
+        function playRound(player){
+            let cpu = getCPUchoice();
             if(player == cpu){
-                console.log("Draw!");
                 return 0;
-            }else if((player - cpu) > 0){
-                console.log("Player won!");
+            }else if((player == 0 && cpu == 2) || (player == 1 && cpu == 0) || (player == 2 && cpu == 0)){
+                Ppoints++;
                 return 1;
             }else{
-                console.log("CPU won")
+                Cpoints++;
                 return -1;
             }
         }
 
         function playGame(numberOfSets){
+            Ppoints = 0;
+            Cpoints = 0;
             for(let i = 0; i < numberOfSets; i++){
                 cpu = getCPUchoice();
                 player = parseInt(prompt("0. Rock\n1. Paper\n2. Scissors"));
-                opt = playRound(player, cpu);
-                if(opt > 0){
-                    Ppoints++;
-                }else if(opt < 0){
-                    Cpoints++;
-                }
+                opt = playRound(player);
             }
-            console.log("Game done\nPlayer: " + Ppoints + "\nCPU: " + Cpoints );
         }
-        playGame(5);
+        
+        function showScore(){
+            let score = document.createElement("h3");
+            let contain = document.querySelector(".container");
+
+            score.classList.add("score");
+            let scoreString = "Player: " + Ppoints + "\nCPU: " + Cpoints;
+            score.textContent = scoreString;
+            contain.appendChild(score)
+        }
+
+        function winCheck(){
+            if(Ppoints == 5){
+                let contain = document.querySelector(".container");
+                let winner = document.createElement("h2");
+                winner.classList.add("winner");
+                winner.textContent = "Player won!"
+                Ppoints = 0;
+                Cpoints = 0;
+                contain.appendChild(winner);
+            }else if (Cpoints == 5){
+                let contain = document.querySelector(".container");
+                let winner = document.createElement("h2");
+                winner.classList.add("winner");
+                winner.textContent = "CPU won!"
+                Ppoints = 0;
+                Cpoints = 0;
+                contain.appendChild(winner);
+            }
+        }
+
     </script>
-    <title>RPS</title>
-</head>
-<body>
-    
 </body>
 </html>
