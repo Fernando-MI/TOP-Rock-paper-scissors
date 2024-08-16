@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>RPS</title>
+    <link rel="stylesheet" href="sytle.css">
 </head>
 <body>
-    <button onclick="setRock()">Rock</button>
-    <button onclick="setPaper()">Paper</button>
-    <button onclick="setScissors()">Scissors</button>
-    <br>
+    <div class="center">
+        <button onclick="setRock()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVqji5vntssYSoZIfWS8i2U1Bj3-ScMzSIbg&s"
+                width="50px"></img></button>
+        <button onclick="setPaper()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiwOQY4HQ9poADjHbtaGGwCHIpSsKBwVM8g&s"
+                width="50px"></button>
+        <button onclick="setScissors()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYpNcASf39pMSoYrBLCgq1pdC1GXZywoUcCA&s"
+                width="50px"></button>
+        <br>
+    </div>
     <button class="play" onclick="playRound(player); showScore(); winCheck()">Play!</button>
     <br>
     <div class="container">
