@@ -1,11 +1,11 @@
 .center{
     display: flex;
-    justify-items: space-between;
     justify-content: center;
 
 }
 .play{
-    margin-left: 45vw;
+    margin-top: 32px;
+    text-align: center;
 }
 button{
     transition: transform .2s;
